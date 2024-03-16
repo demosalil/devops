@@ -15,6 +15,10 @@
 				},
 				"userProperties": [],
 				"typeProperties": {
+					"dataset": {
+						"referenceName": "DS_blob_to_adls_csv",
+						"type": "DatasetReference"
+					},
 					"fieldList": [
 						"childItems"
 					],
@@ -80,8 +84,40 @@
 										"type": "AvroWriteSettings"
 									}
 								},
-								"enableStaging": false
-							}
+								"enableStaging": false,
+								"translator": {
+									"type": "TabularTranslator",
+									"typeConversion": true,
+									"typeConversionSettings": {
+										"allowDataTruncation": true,
+										"treatBooleanAsNumber": false
+									}
+								}
+							},
+							"inputs": [
+								{
+									"referenceName": "DS_blob_to_adls_param",
+									"type": "DatasetReference",
+									"parameters": {
+										"filename_src": {
+											"value": "@item().name",
+											"type": "Expression"
+										}
+									}
+								}
+							],
+							"outputs": [
+								{
+									"referenceName": "DS_blob_to_adls_dst",
+									"type": "DatasetReference",
+									"parameters": {
+										"filename_dst": {
+											"value": "@concat('bronze','_',item().name)",
+											"type": "Expression"
+										}
+									}
+								}
+							]
 						}
 					]
 				}
