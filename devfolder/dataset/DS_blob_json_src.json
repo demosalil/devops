@@ -1,0 +1,20 @@
+{
+	"name": "DS_blob_json_src",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "Ls_blob_to_sdls",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Json",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"fileName": "hospital_J.json",
+				"container": "dev-blob-container"
+			}
+		},
+		"schema": {}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

@@ -1,0 +1,29 @@
+{
+	"name": "DS_blob_to_adls_dst",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "LS_adls_dst",
+			"type": "LinkedServiceReference"
+		},
+		"parameters": {
+			"filename_dst": {
+				"type": "string"
+			}
+		},
+		"annotations": [],
+		"type": "Avro",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileName": {
+					"value": "@dataset().filename_dst",
+					"type": "Expression"
+				},
+				"folderPath": "Bronze",
+				"fileSystem": "dev-adls-container"
+			}
+		},
+		"schema": {}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}
