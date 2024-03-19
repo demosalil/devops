@@ -1,0 +1,62 @@
+{
+	"name": "Json1",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "LS_adls_dst",
+			"type": "LinkedServiceReference"
+		},
+		"parameters": {
+			"filenamecopy": {
+				"type": "string"
+			}
+		},
+		"annotations": [],
+		"type": "Json",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileName": {
+					"value": "@dataset().filenamecopy",
+					"type": "Expression"
+				},
+				"folderPath": "Bronze",
+				"fileSystem": "dev-adls-container"
+			}
+		},
+		"schema": {
+			"type": "object",
+			"properties": {
+				"patient_id": {
+					"type": "integer"
+				},
+				"patient_name": {
+					"type": "string"
+				},
+				"patient_age": {
+					"type": "integer"
+				},
+				"admission_date": {
+					"type": "string"
+				},
+				"doctor_name": {
+					"type": "string"
+				},
+				"diagnosis": {
+					"type": "string"
+				},
+				"treatment_cost": {
+					"type": "number"
+				},
+				"room_number": {
+					"type": "integer"
+				},
+				"discharge_date": {
+					"type": "string"
+				},
+				"insurance_provider": {
+					"type": "string"
+				}
+			}
+		}
+	}
+}

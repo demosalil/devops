@@ -1,0 +1,28 @@
+{
+	"name": "Avro1",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "LS_adls_dst",
+			"type": "LinkedServiceReference"
+		},
+		"parameters": {
+			"dstfilename": {
+				"type": "string"
+			}
+		},
+		"annotations": [],
+		"type": "Avro",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileName": {
+					"value": "@concat('silver',' ',dataset().dstfilename,' ',formatDateTime(utcnow('yyyy-MM-dd HH:mm:ss')))",
+					"type": "Expression"
+				},
+				"folderPath": "Silver",
+				"fileSystem": "dev-adls-container"
+			}
+		},
+		"schema": []
+	}
+}
