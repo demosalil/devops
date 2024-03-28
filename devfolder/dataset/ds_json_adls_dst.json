@@ -1,12 +1,12 @@
 {
-	"name": "DS_blob_json_src",
+	"name": "ds_json_adls_dst",
 	"properties": {
 		"linkedServiceName": {
-			"referenceName": "AzureDataLakeStorage1",
+			"referenceName": "LS_adls_dst",
 			"type": "LinkedServiceReference"
 		},
 		"parameters": {
-			"filena": {
+			"filedst": {
 				"type": "string"
 			}
 		},
@@ -16,14 +16,13 @@
 			"location": {
 				"type": "AzureBlobFSLocation",
 				"fileName": {
-					"value": "@dataset().filena",
+					"value": "@dataset().filedst",
 					"type": "Expression"
 				},
-				"folderPath": "Bronze",
+				"folderPath": "Silver",
 				"fileSystem": "dev-adls-container"
 			}
 		},
 		"schema": {}
-	},
-	"type": "Microsoft.DataFactory/factories/datasets"
+	}
 }

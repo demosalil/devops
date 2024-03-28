@@ -1,0 +1,23 @@
+{
+	"name": "Ds_jsontocsv_dst",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "LS_adls_dst",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"folderPath": "Silver",
+				"fileSystem": "dev-adls-container"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": []
+	}
+}
